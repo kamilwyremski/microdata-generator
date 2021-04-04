@@ -46,6 +46,11 @@
   justify-content: space-between;
 }
 
+.gridNoWrap{
+  display: flex;
+  align-items: center;
+}
+
 .formGroup{
   margin-bottom: 1rem;
 }
@@ -60,7 +65,7 @@
   margin-bottom: 5px;
 }
 
-.generatorSource select, .generatorSource input[type=text], .generatorTarget textarea{
+.generatorSource select, .generatorSource input[type=text], .generatorSource input[type=url], .generatorTarget textarea{
   display: block;
   width: 100%;
   height: calc(1.5em + .75rem + 2px);
@@ -100,4 +105,8 @@
 .btnActive{
   background-color: #f58936;
   color: #FFF;
+}
+
+.gridNoWrap button{
+  margin:0;
 }

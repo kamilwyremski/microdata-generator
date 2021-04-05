@@ -8,7 +8,7 @@
 }
 
 .main {
-  padding: 5rem 0;
+  padding: 3rem 0;
   max-width: 1100px;
   width: 90%;
   margin: auto;
@@ -31,17 +31,18 @@
   align-items: center;
 }
 
-.title {
+.header {
   margin: 0 0 3rem;
-  line-height: 1.15;
-  font-size: 4rem;
   text-align: center;
   margin-bottom: 4rem;
+}
+.header h1{
+  line-height: 1.15;
+  font-size: 4rem;
 }
 
 .grid {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -65,7 +66,7 @@
   margin-bottom: 5px;
 }
 
-.generatorSource select, .generatorSource input[type=text], .generatorSource input[type=url], .generatorTarget textarea{
+.generatorSource select, .generatorSource textarea, .generatorSource input[type=text], .generatorSource input[type=url], .generatorSource input[type=number],.generatorSource input[type=date], .generatorTarget textarea{
   display: block;
   width: 100%;
   height: calc(1.5em + .75rem + 2px);
@@ -79,8 +80,13 @@
   border: 1px solid #ced4da;
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  margin-right: 1rem;
 }
 
+.generatorSource textarea{
+  height: auto;
+  font-family: inherit;
+}
 .generatorTarget{
   width: 50%;
   height: 20rem;
@@ -109,4 +115,13 @@
 
 .gridNoWrap button{
   margin:0;
+}
+
+@media(max-width: 768px) {
+  .generatorSource{
+    width: 100%;
+  }
+  .generatorTarget{
+    width: 100%;
+  }
 }

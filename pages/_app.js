@@ -21,15 +21,15 @@ function MyApp({ Component, pageProps }) {
       <meta name='msapplication-tap-highlight' content='no' />
       <meta name='theme-color' content='#000000' />
                 
-      <link rel='apple-touch-icon' sizes='512x512' href='/icons/icon-512x512.png' />
+      <link rel='apple-touch-icon' sizes='512x512' href='/assets/icons/icon-512x512.png' />
       <link rel='manifest' href='/manifest.json' />
-      <link rel='shortcut icon' href='/icons/icon-512x512.png' />
+      <link rel='shortcut icon' href='/assets/icons/icon-512x512.png' />
           
       <meta name='twitter:card' content='summary' />
       <meta name='twitter:url' content='https://microdata.wyremski.pl/' />
       <meta name='twitter:title' content='Microdata online generator' />
       <meta name='twitter:description' content='Microdata online generator' />
-      <meta name='twitter:image' content='/icons/icon-512x512.png' />
+      <meta name='twitter:image' content='/assets/icons/icon-512x512.png' />
       <meta name='twitter:creator' content='@KamilWyremski' />
 
       <meta property='og:type' content='website' />
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
       <meta property='og:description' content='Microdata online generator' />
       <meta property='og:site_name' content='Microdata online generator' />
       <meta property='og:url' content='https://microdata.wyremski.pl/' />
-      <meta property='og:image' content='https://microdata.wyremski.pl/icons/icon-512x512.png' />
+      <meta property='og:image' content='https://microdata.wyremski.pl/assets/icons/icon-512x512.png' />
 
     </Head>
     <Component {...pageProps} />

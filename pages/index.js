@@ -8,6 +8,7 @@ import Website from "../lib/generator/website"
 import Breadcrumbs from "../lib/generator/breadcrumbs"
 import Article from "../lib/generator/article"
 import Product from "../lib/generator/product"
+import Faq from "../lib/generator/faq"
 
 export default function Home() {
 
@@ -41,13 +42,14 @@ export default function Home() {
         <div className={styles.grid}>
           <div className={styles.generatorSource}>
             <div className={styles.formGroup}>
-              <label for="selectType">Wybierz rodzaj znaczników <a href="https://schema.org" target="_blank" rel="noopener noreferrer" title="Schema">Schema.org</a></label>
+              <label htmlFor="selectType">Wybierz rodzaj znaczników <a href="https://schema.org" target="_blank" rel="noopener noreferrer" title="Schema">Schema.org</a></label>
               <select id="selectType" value={selectType} onChange={e => setSelectType(e.target.value)}>
                 <option value="person">Osoba (Person)</option>
                 <option value="website">Strona www (Website)</option>
                 <option value="breadcrumbs">Nawigacja okruszkowa (Breadcrumbs)</option>
                 <option value="article">Artykuł (Article)</option>
                 <option value="product">Produkt (Product)</option>
+                <option value="faq">Pytania i odpowiedzi (FAQ)</option>
               </select>
             </div>
             {selectType=="person" &&
@@ -65,6 +67,9 @@ export default function Home() {
             {selectType=="product" &&
               <Product generate={(json,microdata) => generate(json, microdata)}/>
             }
+            {selectType=="faq" &&
+              <Faq generate={(json,microdata) => generate(json, microdata)}/>
+            }
           </div>
           <div className={styles.generatorTarget}>
             <nav className={styles.navTab}>
@@ -81,6 +86,11 @@ export default function Home() {
               <button className={styles.btn}>Skopiuj do schowka</button>
             </CopyToClipboard>
             {copiedToClipboard && <span>Pomyślnie skopiowano</span>}
+
+            <form action="https://search.google.com/structured-data/testing-tool" target="_blank" method="post">
+              <textarea name="code" className={styles.dNone} value={generatorOutputJson} readOnly></textarea>
+              <button className={styles.btn}>Sprawdź w Google</button>
+            </form>
           </div>
         </div>
       </main>

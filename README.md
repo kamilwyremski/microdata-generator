@@ -7,6 +7,7 @@ Demo strony: http://microdata.wyremski.pl/
 Run the development server:
 
 ```bash
+npm install
 npm run dev
 npm run build
 ```

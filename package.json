@@ -1,7 +1,13 @@
 {
   "name": "microdata",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.1.0",
+  "private": false,
+  "homepage": "https://microdata.wyremski.pl",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kamilwyremski/microdata-generator.git"
+  },
+  "license": "MIT license",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",

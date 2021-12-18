@@ -54,25 +54,25 @@ export default function Home() {
                 <option value="faq">Pytania i odpowiedzi (FAQ)</option>
               </select>
             </div>
-            {selectType=="person" &&
+            {selectType === "person" &&
               <Person generate={(json,microdata) => generate(json, microdata)}/>
             }
-            {selectType=="organization" &&
+            {selectType === "organization" &&
               <Organization generate={(json,microdata) => generate(json, microdata)}/>
             }
-            {selectType=="website" &&
+            {selectType === "website" &&
               <Website generate={(json,microdata) => generate(json, microdata)}/>
             }
-            {selectType=="breadcrumbs" &&
+            {selectType === "breadcrumbs" &&
               <Breadcrumbs generate={(json,microdata) => generate(json, microdata)}/>
             }
-            {selectType=="article" &&
+            {selectType === "article" &&
               <Article generate={(json,microdata) => generate(json, microdata)}/>
             }
-            {selectType=="product" &&
+            {selectType === "product" &&
               <Product generate={(json,microdata) => generate(json, microdata)}/>
             }
-            {selectType=="faq" &&
+            {selectType === "faq" &&
               <Faq generate={(json,microdata) => generate(json, microdata)}/>
             }
           </div>

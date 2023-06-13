@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import styles from '../styles/Home.module.css';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import Person from "../lib/generator/person";
 import Organization from "../lib/generator/organization";
@@ -23,6 +22,11 @@ export default function Home() {
   const generate = (json, microdata) => {
     setGeneratorOutputJson('<script type="application/ld+json">\r\n' + JSON.stringify(json, null, 4) + '\r\n</script>');
     setGeneratorOutputMicrodata(microdata);
+  }
+
+  const copyToClipboard = async () => {
+    await navigator.clipboard.writeText(outputTab === 'json' ? generatorOutputJson : generatorOutputMicrodata);
+    setCopiedToClipboard(true);
   }
 
   useEffect(() => {
@@ -77,24 +81,23 @@ export default function Home() {
             }
           </div>
           <div className={styles.generatorTarget}>
-            <nav className={styles.navTab}>
+            <nav>
               <button onClick={() => setOutputTab('json')} className={`${styles.btn} ${outputTab == 'json' ? styles.btnActive : ''}`}>JSON-LD</button>
               <button onClick={() => setOutputTab('microdata')} className={`${styles.btn} ${outputTab == 'microdata' ? styles.btnActive : ''}`}>Microdata</button>
             </nav>
-            {outputTab == 'json' &&
-              <textarea value={generatorOutputJson} readOnly></textarea>
-            }
-            {outputTab == 'microdata' &&
-              <textarea value={generatorOutputMicrodata} readOnly></textarea>
-            }
-            <CopyToClipboard text={outputTab == 'json' ? generatorOutputJson : generatorOutputMicrodata} onCopy={() => setCopiedToClipboard(true)}>
-              <button className={styles.btn}>Skopiuj do schowka</button>
-            </CopyToClipboard>
+            <div className={styles.formGroup}>
+              {outputTab == 'json' &&
+                <textarea value={generatorOutputJson} readOnly></textarea>
+              }
+              {outputTab == 'microdata' &&
+                <textarea value={generatorOutputMicrodata} readOnly></textarea>
+              }
+            </div>
+            <button className={styles.btn} onClick={() => copyToClipboard()}>Skopiuj do schowka</button>
             {copiedToClipboard && <span>Pomyślnie skopiowano</span>}
-
             <form action="https://validator.schema.org/" target="_blank" method="post">
               <textarea name="code" className={styles.dNone} value={outputTab == 'json' ? generatorOutputJson: generatorOutputMicrodata} readOnly></textarea>
-              <button className={styles.btn}>Sprawdź w Google</button>
+              <button className={`${styles.btn} ${styles.btnActive}`}>Sprawdź w Google</button>
             </form>
           </div>
         </div>
@@ -102,7 +105,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a href="https://wyremski.pl" target="_blank" rel="noopener noreferrer" title="Full Stack Web Developer"
-        >Created 2021 by Kamil Wyremski</a>
+        >Created 2021 - 2023 by Kamil Wyremski</a>
       </footer>
     </div>
   )

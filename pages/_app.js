@@ -39,6 +39,7 @@ function MyApp({ Component, pageProps }) {
       <meta property='og:url' content='https://microdata.wyremski.pl/' />
       <meta property='og:image' content='https://microdata.wyremski.pl/assets/icons/icon-512x512.png' />
 
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7473594052398878" crossorigin="anonymous"></script>
     </Head>
     <Component {...pageProps} />
   </>

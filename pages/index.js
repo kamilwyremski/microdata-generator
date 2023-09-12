@@ -95,7 +95,7 @@ export default function Home() {
             </div>
             <button className={styles.btn} onClick={() => copyToClipboard()}>Skopiuj do schowka</button>
             {copiedToClipboard && <span>Pomyślnie skopiowano</span>}
-            <form action="https://validator.schema.org/" target="_blank" method="post">
+            <form action="https://search.google.com/test/rich-results" target="_blank" method="post">
               <textarea name="code" className={styles.dNone} value={outputTab == 'json' ? generatorOutputJson: generatorOutputMicrodata} readOnly></textarea>
               <button className={`${styles.btn} ${styles.btnActive}`}>Sprawdź w Google</button>
             </form>

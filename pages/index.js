@@ -105,7 +105,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a href="https://wyremski.pl" target="_blank" rel="noopener noreferrer" title="Full Stack Web Developer"
-        >Created 2021 - 2023 by Kamil Wyremski</a>
+        >Created 2021 - 2026 by Kamil Wyremski</a>
       </footer>
     </div>
   )

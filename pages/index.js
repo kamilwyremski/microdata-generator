@@ -13,7 +13,7 @@ import Faq from "../lib/generator/faq";
 export default function Home() {
 
   const [selectType, setSelectType] = useState('person')
-  const [copiedToClipboard, setCopiedToClipboard] = useState(false)
+  const [clipboardStatus, setClipboardStatus] = useState(null)
 
   const [generatorOutputJson, setGeneratorOutputJson] = useState('')
   const [generatorOutputMicrodata, setGeneratorOutputMicrodata] = useState('')
@@ -25,16 +25,22 @@ export default function Home() {
   }
 
   const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(outputTab === 'json' ? generatorOutputJson : generatorOutputMicrodata);
-    setCopiedToClipboard(true);
+    try {
+      await navigator.clipboard.writeText(outputTab === 'json' ? generatorOutputJson : generatorOutputMicrodata);
+      setClipboardStatus({ success: true, message: 'Pomyślnie skopiowano' });
+    } catch (error) {
+      console.error('Nie udało się skopiować kodu:', error);
+      setClipboardStatus({ success: false, message: 'Nie udało się skopiować kodu. Skopiuj go ręcznie.' });
+    }
   }
 
   useEffect(() => {
-    let timer1 = setTimeout(() => setCopiedToClipboard(false), 1500)
+    if (!clipboardStatus?.success) return
+    let timer1 = setTimeout(() => setClipboardStatus(null), 1500)
     return () => {
       clearTimeout(timer1)
     }
-  },[copiedToClipboard]);
+  },[clipboardStatus]);
 
   return (
     <div className={styles.container}>
@@ -94,10 +100,11 @@ export default function Home() {
               }
             </div>
             <button className={styles.btn} onClick={() => copyToClipboard()}>Skopiuj do schowka</button>
-            {copiedToClipboard && <span>Pomyślnie skopiowano</span>}
-            <form action="https://search.google.com/test/rich-results" target="_blank" method="post">
+            <span role="status">{clipboardStatus?.message}</span>
+            <form action="https://search.google.com/test/rich-results" target="_blank" method="post" onSubmit={() => copyToClipboard()}>
               <textarea name="code" className={styles.dNone} value={outputTab == 'json' ? generatorOutputJson: generatorOutputMicrodata} readOnly></textarea>
               <button className={`${styles.btn} ${styles.btnActive}`}>Sprawdź w Google</button>
+              <span>Kod zostanie skopiowany. Wklej go w Google.</span>
             </form>
           </div>
         </div>
